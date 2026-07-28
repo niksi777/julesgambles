@@ -79,8 +79,9 @@
     @keyframes pu{0%,100%{opacity:1}50%{opacity:.15}}
     .lb-header{text-align:center;padding:32px 0 8px}
     .lb-platform-logo{height:38px;object-fit:contain;margin-bottom:10px}
-    .lb-prize-amt{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:800;line-height:1;color:#fff}
-    .lb-prize-lbl{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-top:4px}
+    .lb-prize-amt{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:800;line-height:1;color:#fff;display:flex;align-items:center;justify-content:center;gap:4px}
+    .lb-prize-dollar{color:#22c55e}
+    .lb-prize-lbl{font-size:13px;font-weight:400;color:rgba(255,255,255,.5);margin-bottom:8px}
     .lb-code{font-size:13px;color:var(--mu);margin-top:8px}
     .lb-code strong{color:#fff;letter-spacing:.06em}
     .lb-meta{display:flex;align-items:center;justify-content:center;gap:18px;margin:16px 0 20px;flex-wrap:wrap}
@@ -99,25 +100,26 @@
     .cd-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:#fff;background:rgba(255,255,255,.05);border:1px solid var(--b2);border-radius:8px;padding:6px 14px;min-width:54px;text-align:center;line-height:1}
     .cd-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-top:5px}
     .cd-sep{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:rgba(255,255,255,.2);padding-bottom:18px;align-self:flex-end}
-    .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;align-items:end}
-    .pcard{background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;margin-top:28px}
-    .pcard.p1{border-color:rgba(212,175,90,.5);box-shadow:0 0 36px rgba(212,175,90,.15);padding:40px 24px 32px;margin-top:0}
-    .pavatar-wrap{position:relative;margin-bottom:2px}
-    .pavatar{width:72px;height:72px;border-radius:50%;background:var(--s2);border:3px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--mu);text-transform:uppercase;overflow:hidden;object-fit:cover}
-    .p1 .pavatar{width:96px;height:96px;border-color:rgba(212,175,90,.5)}
-    .prank-badge{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);min-width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#fff;border:2px solid #0d1117;padding:0 6px}
-    .p1 .prank-badge{background:#c8940a}
-    .p2 .prank-badge{background:#6b7a8d}
-    .p3 .prank-badge{background:#7a4f2a}
-    .puname{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#fff;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .pstat-block{width:100%;background:rgba(255,255,255,.05);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-    .pstat-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 6px}
-    .pstat-prize-row{background:rgba(0,0,0,.45);border-radius:8px}
-    .pstat-lbl{font-size:13px;font-weight:600;color:#fff}
-    .pstat-lbl.muted{font-size:12px;font-weight:400;color:rgba(221,227,239,.45)}
-    .pstat-val{display:flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:#fff}
-    .pstat-val.muted{color:rgba(221,227,239,.45)}
-    .pstat-coin{width:14px;height:14px;border-radius:50%;background:#d4a020;flex-shrink:0}
+    .podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;margin-bottom:32px;align-items:end}
+    .pcard{background:#1c1c1c;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+    .pcard.p1{border:2px solid #c8840a;padding:26px 22px 22px}
+    .pcard.p3{border:2px solid #7a3a10}
+    .pavatar-wrap{position:relative;margin-bottom:8px}
+    .pavatar{width:80px;height:80px;border-radius:50%;background:#111;border:3px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;overflow:hidden;object-fit:cover}
+    .p1 .pavatar{width:104px;height:104px;border-color:#c8840a}
+    .p3 .pavatar{border-color:#7a3a10}
+    .prank-badge{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);min-width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:#fff;padding:0 7px}
+    .p1 .prank-badge{background:#c8840a}
+    .p2 .prank-badge{background:#525252}
+    .p3 .prank-badge{background:#7a3a10}
+    .puname{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:#fff;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pstat-block{width:100%;background:rgba(0,0,0,.45);border-radius:8px;overflow:hidden}
+    .pstat-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px}
+    .pstat-divider{width:100%;height:1px;background:rgba(255,255,255,.07)}
+    .pstat-lbl{font-size:14px;font-weight:700;color:#fff}
+    .pstat-lbl.muted{font-size:13px;font-weight:400;color:rgba(255,255,255,.45)}
+    .pstat-val{display:flex;align-items:center;gap:3px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:#fff}
+    .pstat-val.muted{color:rgba(255,255,255,.45)}
     .pstat-green{color:#22c55e}
     .sdiv{display:flex;align-items:center;gap:14px;margin:28px 0 18px}
     .sdl{flex:1;height:1px;background:var(--b2)}
@@ -286,8 +288,8 @@ function GambaLeaderboard() {
     <div>
       <div className="lb-header">
         <img src="/assets/gamba.png" className="lb-platform-logo" alt="Gamba"/>
-        <div className="lb-prize-amt">{meta.prizePool ? `$${Number(meta.prizePool).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}` : '—'}</div>
-        <div className="lb-prize-lbl">Prize Pool</div>
+        <div className="lb-prize-lbl">Monthly Wager Competition</div>
+        <div className="lb-prize-amt">{meta.prizePool ? <><span className="lb-prize-dollar">$</span>{Number(meta.prizePool).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}</> : '—'}</div>
         <div className="lb-code">Use code <strong>JULES</strong> to qualify</div>
       </div>
 
@@ -316,13 +318,14 @@ function GambaLeaderboard() {
                 </div>
                 <div className="puname">{p.username}</div>
                 <div className="pstat-block">
-                  <div className="pstat-row pstat-prize-row">
+                  <div className="pstat-row">
                     <span className="pstat-lbl">Prize</span>
                     <span className="pstat-val"><span className="pstat-green">$</span>{fmtNum(p.reward)}</span>
                   </div>
+                  <div className="pstat-divider"/>
                   <div className="pstat-row">
                     <span className="pstat-lbl muted">Wagered</span>
-                    <span className="pstat-val muted"><span style={{color:'rgba(221,227,239,.45)'}}>$</span>{fmtNum(p.wager)}</span>
+                    <span className="pstat-val muted"><span>$</span>{fmtNum(p.wager)}</span>
                   </div>
                 </div>
               </div>
