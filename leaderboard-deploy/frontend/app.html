@@ -68,12 +68,18 @@
     .vip-subtitle{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
     .vip-subtitle strong{color:rgba(255,255,255,.8)}
     .vip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-    .vip-row{background:#1c1c1c;border-radius:10px;padding:14px 18px;display:grid;grid-template-columns:48px 1fr 90px 110px;align-items:center;gap:12px;position:relative}
-    .vip-row::before{content:'';position:absolute;inset:0;border-radius:10px;padding:1px;background:linear-gradient(to bottom,transparent,var(--row-color,rgba(255,255,255,.1)) 80%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;pointer-events:none}
-    .vip-badge{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;position:relative}
-    .vip-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
-    .vip-xp{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.5);text-align:right;font-variant-numeric:tabular-nums}
-    .vip-reward{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#22c55e;text-align:right}
+    .vip-col{display:flex;flex-direction:column;gap:0;border-radius:12px;overflow:hidden}
+    .vip-col-head{background:#141414;display:grid;grid-template-columns:48px 1fr 80px 80px 80px;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .vip-ch{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center}
+    .vip-ch:nth-child(2){text-align:left}
+    .vip-row{background:#1c1c1c;padding:12px 16px;display:grid;grid-template-columns:48px 1fr 80px 80px 80px;align-items:center;gap:8px;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+    .vip-row:last-child{border-bottom:none}
+    .vip-row::before{content:'';position:absolute;inset:0;padding:0 0 0 2px;background:var(--row-color,transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;pointer-events:none;border-radius:0}
+    .vip-badge{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;flex-shrink:0}
+    .vip-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .vip-xp{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;color:rgba(255,255,255,.45);text-align:center;font-variant-numeric:tabular-nums}
+    .vip-reward{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:#22c55e;text-align:center}
+    .vip-bonus{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:rgba(34,197,94,.55);text-align:center}
     .vip-footer{background:#1c1c1c;border-radius:12px;padding:22px;text-align:center;border:1px solid rgba(255,255,255,.08)}
     .vip-footer p{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:6px}
     .vip-footer span{font-size:13px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase}
@@ -416,14 +422,25 @@ function RewardsPage() {
   ];
   const left  = ranks.slice(0, 6);
   const right = ranks.slice(6);
+  const nameColor = c => c === '#f59e0b' ? '#fbbf24' : c === '#7dd3fc' ? '#93c5fd' : c === '#9ca3af' ? '#d1d5db' : '#e8c4a0';
   const Row = ({ r }) => (
     <div className="vip-row" style={{'--row-color': r.color}}>
       <div className="vip-badge" style={{background:`${r.color}22`,border:`1px solid ${r.color}55`}}>
         <span style={{color:r.color}}>{r.n}</span>
       </div>
-      <div className="vip-name" style={{color:r.color === '#f59e0b' ? '#fbbf24' : r.color === '#7dd3fc' ? '#93c5fd' : '#fff'}}>{r.tier} {r.n}</div>
+      <div className="vip-name" style={{color:nameColor(r.color)}}>{r.tier} {r.n}</div>
       <div className="vip-xp">{r.xp}</div>
-      <div className="vip-reward">{r.base} <span style={{color:'rgba(34,197,94,.6)'}}>+{r.match}</span></div>
+      <div className="vip-reward">{r.base}</div>
+      <div className="vip-bonus">+{r.match}</div>
+    </div>
+  );
+  const ColHead = () => (
+    <div className="vip-col-head">
+      <div className="vip-ch"/>
+      <div className="vip-ch" style={{textAlign:'left'}}>Rank</div>
+      <div className="vip-ch">XP</div>
+      <div className="vip-ch">Reward</div>
+      <div className="vip-ch">+Bonus</div>
     </div>
   );
   return (
@@ -434,8 +451,8 @@ function RewardsPage() {
           <div className="vip-subtitle">Example: you get <strong>$20 for Silver 2</strong> - I will then add another <strong>$10</strong></div>
         </div>
         <div className="vip-grid">
-          <div style={{display:'flex',flexDirection:'column',gap:10}}>{left.map((r,i) => <Row key={i} r={r}/>)}</div>
-          <div style={{display:'flex',flexDirection:'column',gap:10}}>{right.map((r,i) => <Row key={i} r={r}/>)}</div>
+          <div className="vip-col"><ColHead/>{left.map((r,i) => <Row key={i} r={r}/>)}</div>
+          <div className="vip-col"><ColHead/>{right.map((r,i) => <Row key={i} r={r}/>)}</div>
         </div>
         <div className="vip-footer">
           <p>DM me on Discord or create a ticket to claim!</p>
