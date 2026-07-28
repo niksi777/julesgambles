@@ -81,7 +81,7 @@
     .lb-platform-logo{height:38px;object-fit:contain;margin-bottom:10px}
     .lb-prize-amt{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:800;line-height:1;color:#fff;display:flex;align-items:center;justify-content:center;gap:4px}
     .lb-prize-dollar{color:#22c55e}
-    .lb-prize-lbl{font-size:13px;font-weight:400;color:rgba(255,255,255,.5);margin-bottom:8px}
+    .lb-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
     .lb-code{font-size:13px;color:var(--mu);margin-top:8px}
     .lb-code strong{color:#fff;letter-spacing:.06em}
     .lb-meta{display:flex;align-items:center;justify-content:center;gap:18px;margin:16px 0 20px;flex-wrap:wrap}
@@ -290,22 +290,9 @@ function GambaLeaderboard() {
     <div>
       <div className="lb-header">
         <img src="/assets/gamba.png" className="lb-platform-logo" alt="Gamba"/>
-        <div className="lb-prize-lbl">Monthly Wager Competition</div>
+        <div className="lb-title">Bi-Weekly Leaderboard</div>
         <div className="lb-prize-amt">{meta.prizePool ? <><span className="lb-prize-dollar">$</span>{Number(meta.prizePool).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}</> : '—'}</div>
         <div className="lb-code">Use code <strong>JULES</strong> to qualify</div>
-      </div>
-
-      <div className="lb-meta">
-        {!ended ? (
-          <span className="live-badge"><span className="live-dot"/>Live</span>
-        ) : (
-          <span style={{fontSize:11,fontWeight:600,letterSpacing:'.1em',color:'var(--mu)'}}>ENDED</span>
-        )}
-        {meta.endDate && (
-          <span className="lb-meta-item">
-            {ended ? 'Ended' : 'Ends'}: <strong>{new Date(meta.endDate).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}</strong>
-          </span>
-        )}
       </div>
 
       {top3.length > 0 && (
