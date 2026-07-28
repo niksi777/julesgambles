@@ -20,9 +20,10 @@
     .nlogo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
     .nname{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.16em;color:#fff;text-transform:uppercase}
     .nlinks{display:flex;align-items:center;position:absolute;left:50%;transform:translateX(-50%)}
-    .nlinks a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:0 13px;height:76px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-1px;cursor:pointer}
+    .nlinks a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:0 13px;height:76px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-1px;cursor:pointer;position:relative}
     .nlinks a:hover{color:rgba(255,255,255,.9)}
-    .nlinks a.on{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
+    .nlinks a.on{color:#fff;border-bottom-color:#fff}
+    .nlinks a.on::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:36px;height:36px;background:#fff;border-radius:50%;filter:blur(20px);opacity:.55;pointer-events:none}
     .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;margin-left:auto;padding:4px;background:none;border:none}
     .hamburger span{display:block;height:1.5px;background:rgba(255,255,255,.6);border-radius:2px}
     .drawer{display:none;flex-direction:column;background:rgba(6,7,13,.99);border-bottom:1px solid var(--b2);padding:10px 28px 18px}
