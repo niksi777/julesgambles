@@ -181,29 +181,12 @@ function Nav({ page, setPage, drawerOpen, setDrawerOpen }) {
 }
 
 function HomePage({ setPage }) {
-  const TrophyIcon = () => (
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 9H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/><path d="M18 9h3a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3"/>
-      <path d="M6 4h12v8a6 6 0 0 1-12 0V4z"/><path d="M12 18v4"/><path d="M8 22h8"/>
-    </svg>
-  );
-  const CrownIcon = () => (
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 19h20M2 19l3-9 5 5 2-9 2 9 5-5 3 9"/>
-    </svg>
-  );
-  const SwordsIcon = () => (
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/>
-      <polyline points="16 16 20 20"/><polyline points="21 11.5 11.5 21"/>
-      <path d="M4.5 6.5 8 10M7.5 3.5 11 7"/>
-    </svg>
-  );
-  const StarIcon = () => (
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-      <circle cx="12" cy="12" r="3" strokeWidth="0" fill="currentColor" opacity=".3"/>
-    </svg>
+  const EmojiIcon = ({ code }) => (
+    <img
+      src={`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${code}.png`}
+      width="72" height="72"
+      style={{imageRendering:'auto',filter:'drop-shadow(0 4px 12px rgba(0,0,0,.5))'}}
+    />
   );
   return (
     <div className="page">
@@ -222,19 +205,19 @@ function HomePage({ setPage }) {
 
       <div className="navcards f2">
         <a className="navcard" onClick={() => setPage('leaderboards')}>
-          <div className="navcard-icon"><TrophyIcon/></div>
+          <div className="navcard-icon"><EmojiIcon code="1f3c6"/></div>
           <div className="navcard-label">Leaderboards</div>
         </a>
         <a className="navcard" onClick={() => setPage('rewards')}>
-          <div className="navcard-icon"><CrownIcon/></div>
+          <div className="navcard-icon"><EmojiIcon code="1f451"/></div>
           <div className="navcard-label">VIP System</div>
         </a>
         <a className="navcard">
-          <div className="navcard-icon"><SwordsIcon/></div>
+          <div className="navcard-icon"><EmojiIcon code="1f3c5"/></div>
           <div className="navcard-label">Tournaments</div>
         </a>
         <a className="navcard">
-          <div className="navcard-icon"><StarIcon/></div>
+          <div className="navcard-icon"><EmojiIcon code="1f3b0"/></div>
           <div className="navcard-label">Bonus Hunts</div>
         </a>
       </div>
