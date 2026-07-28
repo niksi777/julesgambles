@@ -99,36 +99,37 @@
     .cd-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:#fff;background:rgba(255,255,255,.05);border:1px solid var(--b2);border-radius:8px;padding:6px 14px;min-width:54px;text-align:center;line-height:1}
     .cd-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-top:5px}
     .cd-sep{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:rgba(255,255,255,.2);padding-bottom:18px;align-self:flex-end}
-    .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;align-items:end}
-    .pcard{background:var(--s1);border:1px solid var(--b2);border-radius:12px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:9px;position:relative;overflow:hidden}
-    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--pline)}
-    .pcard.p1{--pline:rgba(212,175,90,.7);border-color:rgba(212,175,90,.2);padding-top:26px;padding-bottom:26px}
-    .pcard.p2{--pline:rgba(154,170,184,.4);border-color:rgba(154,170,184,.15)}
-    .pcard.p3{--pline:rgba(160,113,74,.4);border-color:rgba(160,113,74,.15)}
-    .prank{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-    .p1 .prank{color:#d4af5a}.p2 .prank{color:#9aaab8}.p3 .prank{color:#a0714a}
-    .pavatar{width:48px;height:48px;border-radius:50%;background:var(--s2);border:2px solid var(--b2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--mu);text-transform:uppercase;overflow:hidden;object-fit:cover}
-    .p1 .pavatar{width:64px;height:64px;font-size:16px}
-    .puname{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .ppts{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;line-height:1}
-    .p1 .ppts{color:#d4af5a;font-size:24px}.p2 .ppts{color:#9aaab8}.p3 .ppts{color:#a0714a}
-    .ppts-lbl{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
-    .prize-tag{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--ac);background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);border-radius:5px;padding:2px 8px}
+    .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;align-items:end}
+    .pcard{background:#0f1420;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;margin-top:20px}
+    .pcard.p1{border-color:rgba(212,175,90,.45);box-shadow:0 0 30px rgba(212,175,90,.13);padding-top:32px;padding-bottom:28px;margin-top:0}
+    .pavatar-wrap{position:relative;margin-bottom:4px}
+    .pavatar{width:64px;height:64px;border-radius:50%;background:var(--s2);border:3px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--mu);text-transform:uppercase;overflow:hidden;object-fit:cover}
+    .p1 .pavatar{width:80px;height:80px;border-color:rgba(212,175,90,.45)}
+    .prank-badge{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);min-width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:#fff;border:2px solid #0f1420;padding:0 5px}
+    .p1 .prank-badge{background:#c8940a}
+    .p2 .prank-badge{background:#6b7a8d}
+    .p3 .prank-badge{background:#7a4f2a}
+    .puname{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .pstat-block{width:100%;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:8px}
+    .pstat-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .pstat-lbl{font-size:13px;font-weight:600;color:#fff}
+    .pstat-lbl.muted{font-size:12px;font-weight:400;color:var(--mu)}
+    .pstat-val{display:flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff}
+    .pstat-coin{width:13px;height:13px;border-radius:50%;background:#d4a020;flex-shrink:0}
     .sdiv{display:flex;align-items:center;gap:14px;margin:28px 0 18px}
     .sdl{flex:1;height:1px;background:var(--b2)}
     .sdlbl{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
     .lbtable{border:1px solid var(--b1);border-radius:12px;overflow:hidden;margin-bottom:56px}
-    .lbhead{display:grid;grid-template-columns:60px 1fr 140px 120px;gap:0;align-items:center;padding:10px 20px;background:var(--s2);border-bottom:1px solid var(--b1)}
-    .lbh{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-align:center}
-    .lbh:nth-child(2){text-align:center}
-    .lbrow{display:grid;grid-template-columns:60px 1fr 140px 120px;gap:0;align-items:center;padding:14px 20px;background:var(--s1);border-bottom:1px solid var(--b1);transition:background .15s}
+    .lbhead{display:grid;grid-template-columns:60px 1fr 160px 130px;align-items:center;padding:10px 20px;background:var(--s2);border-bottom:1px solid var(--b1)}
+    .lbh{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);display:flex;align-items:center;justify-content:center}
+    .lbrow{display:grid;grid-template-columns:60px 1fr 160px 130px;align-items:center;padding:14px 20px;background:var(--s1);border-bottom:1px solid var(--b1);transition:background .15s}
     .lbrow:last-child{border-bottom:none}
     .lbrow:hover{background:var(--s2)}
-    .lbrk{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-align:center;color:var(--mu)}
-    .lbnm{font-size:13px;font-weight:500;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
-    .lbwager{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--mu);text-align:center;white-space:nowrap}
-    .lbprize{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--ac);text-align:center;white-space:nowrap}
-    @media(max-width:600px){.podium{gap:6px}.cd-num{font-size:28px;padding:5px 10px;min-width:42px}}
+    .lbrk{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--mu);display:flex;align-items:center;justify-content:center}
+    .lbnm{font-size:13px;font-weight:500;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;justify-content:center}
+    .lbwager{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--mu);display:flex;align-items:center;justify-content:center;white-space:nowrap}
+    .lbprize{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--ac);display:flex;align-items:center;justify-content:center;white-space:nowrap}
+    @media(max-width:600px){.podium{gap:8px}.cd-num{font-size:28px;padding:5px 10px;min-width:42px}}
 
     /* Coming soon */
     .coming-soon{text-align:center;padding:80px 20px;color:var(--mu)}
@@ -300,16 +301,28 @@ function GambaLeaderboard() {
 
       {top3.length > 0 && (
         <div className="podium">
-          {podiumOrder.map((p, i) => p ? (
-            <div key={p.id} className={`pcard ${podiumClass[i]}`}>
-              <div className="prank">{podiumClass[i] === 'p1' ? '1st Place' : podiumClass[i] === 'p2' ? '2nd Place' : '3rd Place'}</div>
-              <Avatar src={p.avatar} name={p.username} className="pavatar"/>
-              <div className="puname">{p.username}</div>
-              <div className="ppts">{fmtWager(p.wager)}</div>
-              <div className="ppts-lbl">Wagered</div>
-              {p.reward > 0 && <div className="prize-tag">{fmtPrize(p.reward)}</div>}
-            </div>
-          ) : <div key={i}/>)}
+          {podiumOrder.map((p, i) => {
+            const rankNum = podiumClass[i] === 'p1' ? 1 : podiumClass[i] === 'p2' ? 2 : 3;
+            return p ? (
+              <div key={p.id} className={`pcard ${podiumClass[i]}`}>
+                <div className="pavatar-wrap">
+                  <Avatar src={p.avatar} name={p.username} className="pavatar"/>
+                  <div className="prank-badge">{rankNum}</div>
+                </div>
+                <div className="puname">{p.username}</div>
+                <div className="pstat-block">
+                  <div className="pstat-row">
+                    <span className="pstat-lbl">Prize</span>
+                    <span className="pstat-val"><span className="pstat-coin"/>{fmtPrize(p.reward)}</span>
+                  </div>
+                  <div className="pstat-row">
+                    <span className="pstat-lbl muted">Wagered</span>
+                    <span className="pstat-val" style={{color:'var(--mu)'}}><span className="pstat-coin" style={{background:'#6b7a8d'}}/>{fmtWager(p.wager)}</span>
+                  </div>
+                </div>
+              </div>
+            ) : <div key={i}/>;
+          })}
         </div>
       )}
 
