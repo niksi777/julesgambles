@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JULESGAMBLES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#07080e;--s1:#0c1020;--s2:#101828;--b1:rgba(255,255,255,.04);--b2:rgba(255,255,255,.08);--b3:rgba(255,255,255,.14);--tx:#dde3ef;--mu:rgba(221,227,239,.65);--ac:#a855f7;--gold:#d4af5a}
+    html,body{background-color:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+    @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .f1{animation:fu .5s ease both}.f2{animation:fu .5s .15s ease both}.f3{animation:fu .5s .3s ease both}
+
+    nav{background:rgba(6,7,13,.97);border-bottom:1px solid var(--b2);position:sticky;top:0;z-index:50}
+    .ni{max-width:1020px;margin:0 auto;padding:0 28px;display:flex;align-items:center;height:56px}
+    .nlogo{display:flex;align-items:center;gap:10px;padding-right:22px;border-right:1px solid var(--b2);margin-right:18px;flex-shrink:0;text-decoration:none}
+    .nname{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.16em;color:#fff;text-transform:uppercase}
+    .nlinks{display:flex;align-items:center;flex:1}
+    .nlinks a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:0 13px;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-1px;cursor:pointer}
+    .nlinks a:hover{color:rgba(255,255,255,.9)}
+    .nlinks a.on{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
+    .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;margin-left:auto;padding:4px;background:none;border:none}
+    .hamburger span{display:block;height:1.5px;background:rgba(255,255,255,.6);border-radius:2px}
+    .drawer{display:none;flex-direction:column;background:rgba(6,7,13,.99);border-bottom:1px solid var(--b2);padding:10px 28px 18px}
+    .drawer.open{display:flex}
+    .drawer a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--b1);transition:color .15s;cursor:pointer}
+    .drawer a:last-of-type{border-bottom:none}
+    .drawer a.on,.drawer a:hover{color:#fff}
+    @media(max-width:640px){.nlinks{display:none}.hamburger{display:flex}}
+
+    .page{width:100%;max-width:1020px;margin:0 auto;padding:0 28px}
+
+    /* Hero */
+    .hero{position:relative;border-radius:16px;overflow:hidden;height:280px;margin:28px 0 32px;background:linear-gradient(135deg,#0d0a1a 0%,#1a0d2e 50%,#0d0a1a 100%);box-shadow:0 8px 48px rgba(0,0,0,.55);display:flex;align-items:center;padding:40px 52px}
+    .hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(168,85,247,.15) 0%,transparent 60%);pointer-events:none}
+    .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
+    .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:58px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:.95;margin-bottom:14px}
+    .hero-sub{font-size:14px;color:var(--mu);max-width:380px;line-height:1.6;margin-bottom:24px}
+    .hero-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:8px;background:var(--ac);color:#fff;border:none;cursor:pointer;transition:opacity .15s;text-decoration:none}
+    .hero-btn:hover{opacity:.85}
+
+    /* Section */
+    .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .sec-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+    .sec-line{flex:1;height:1px;background:var(--b2)}
+
+    /* Platform cards */
+    .platforms{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:48px}
+    .pcard{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .15s}
+    .pcard:hover{border-color:var(--b3);transform:translateY(-2px)}
+    .pcard-top{display:flex;align-items:center;gap:14px}
+    .pcard-logo{width:48px;height:48px;border-radius:10px;object-fit:contain;background:var(--s2);padding:6px}
+    .pcard-info{flex:1}
+    .pcard-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+    .pcard-code{font-size:11px;color:var(--mu);margin-top:2px}
+    .pcard-code span{color:var(--ac);font-weight:600}
+    .pcard-desc{font-size:13px;color:var(--mu);line-height:1.55}
+    .pcard-btn{display:flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border-radius:8px;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.25);color:var(--ac);cursor:pointer;transition:background .15s,border-color .15s;text-decoration:none}
+    .pcard-btn:hover{background:rgba(168,85,247,.2);border-color:rgba(168,85,247,.4)}
+
+    /* Leaderboard tab */
+    .lb-wrap{padding:32px 0 64px}
+    .ptabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+    .ptab{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 20px;border-radius:8px;border:1px solid var(--b2);background:var(--s1);color:var(--mu);cursor:pointer;transition:all .15s}
+    .ptab:hover{color:#fff;border-color:var(--b3)}
+    .ptab.active{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.35);color:var(--ac)}
+
+    /* Rewards tab */
+    .rewards-wrap{padding:32px 0 64px}
+    .rcard{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:24px;margin-bottom:16px}
+    .rcard-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:8px}
+    .rcard-desc{font-size:13px;color:var(--mu);line-height:1.6}
+
+    /* Coming soon */
+    .coming-soon{text-align:center;padding:80px 20px;color:var(--mu)}
+    .coming-soon-icon{font-size:48px;margin-bottom:16px}
+    .coming-soon-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:8px}
+    .coming-soon-sub{font-size:14px;color:var(--mu)}
+
+    footer{border-top:1px solid var(--b1);padding:32px 28px;text-align:center;font-size:12px;color:rgba(221,227,239,.3);margin-top:auto}
+  </style>
+</head>
+<body>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function Nav({ page, setPage, drawerOpen, setDrawerOpen }) {
+  const links = [
+    { id: 'home', label: 'Home' },
+    { id: 'leaderboards', label: 'Leaderboards' },
+    { id: 'rewards', label: 'Rewards' },
+  ];
+  return (
+    <>
+      <nav>
+        <div className="ni">
+          <a className="nlogo" onClick={() => setPage('home')} style={{cursor:'pointer'}}>
+            <span className="nname">JulesGambles</span>
+          </a>
+          <div className="nlinks">
+            {links.map(l => (
+              <a key={l.id} className={page === l.id ? 'on' : ''} onClick={() => { setPage(l.id); setDrawerOpen(false); }}>
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <button className="hamburger" onClick={() => setDrawerOpen(o => !o)}>
+            <span/><span/><span/>
+          </button>
+        </div>
+      </nav>
+      <div className={`drawer ${drawerOpen ? 'open' : ''}`}>
+        {links.map(l => (
+          <a key={l.id} className={page === l.id ? 'on' : ''} onClick={() => { setPage(l.id); setDrawerOpen(false); }}>
+            {l.label}
+          </a>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function HomePage({ setPage }) {
+  return (
+    <div className="page">
+      {/* Hero */}
+      <div className="hero f1">
+        <div className="hero-glow"/>
+        <div style={{position:'relative',zIndex:1}}>
+          <div className="hero-eyebrow">Welcome</div>
+          <div className="hero-title">Jules<br/>Gambles</div>
+          <div className="hero-sub">Exclusive leaderboards, rewards and more. Use code JULES on partnered platforms.</div>
+          <a className="hero-btn" onClick={() => setPage('leaderboards')}>View Leaderboards</a>
+        </div>
+      </div>
+
+      {/* Platforms */}
+      <div className="f2">
+        <div className="sec-head">
+          <span className="sec-title">Partnered Platforms</span>
+          <div className="sec-line"/>
+        </div>
+        <div className="platforms">
+          <div className="pcard">
+            <div className="pcard-top">
+              <div style={{width:48,height:48,borderRadius:10,background:'var(--s2)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22}}>🎰</div>
+              <div className="pcard-info">
+                <div className="pcard-name">Coming Soon</div>
+                <div className="pcard-code">Code: <span>JULES</span></div>
+              </div>
+            </div>
+            <div className="pcard-desc">Partnered platforms will appear here. Check back soon.</div>
+            <a className="pcard-btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LeaderboardsPage() {
+  return (
+    <div className="page">
+      <div className="lb-wrap">
+        <div className="sec-head" style={{marginBottom:24}}>
+          <span className="sec-title">Leaderboards</span>
+          <div className="sec-line"/>
+        </div>
+        <div className="coming-soon">
+          <div className="coming-soon-icon">🏆</div>
+          <div className="coming-soon-title">Coming Soon</div>
+          <div className="coming-soon-sub">Leaderboards will be added once platforms are set up.</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RewardsPage() {
+  return (
+    <div className="page">
+      <div className="rewards-wrap">
+        <div className="sec-head" style={{marginBottom:24}}>
+          <span className="sec-title">Rewards</span>
+          <div className="sec-line"/>
+        </div>
+        <div className="coming-soon">
+          <div className="coming-soon-icon">🎁</div>
+          <div className="coming-soon-title">Coming Soon</div>
+          <div className="coming-soon-sub">Rewards and bonuses will be listed here.</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const pathMap = { '/': 'home', '/leaderboards': 'leaderboards', '/rewards': 'rewards' };
+  const [page, setPage] = useState(pathMap[window.location.pathname] || 'home');
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    const titles = { home: 'JulesGambles', leaderboards: 'Leaderboards - JulesGambles', rewards: 'Rewards - JulesGambles' };
+    document.title = titles[page] || 'JulesGambles';
+    window.history.pushState({}, '', page === 'home' ? '/' : '/' + page);
+  }, [page]);
+
+  return (
+    <>
+      <Nav page={page} setPage={setPage} drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen}/>
+      {page === 'home'         && <HomePage setPage={setPage}/>}
+      {page === 'leaderboards' && <LeaderboardsPage/>}
+      {page === 'rewards'      && <RewardsPage/>}
+      <footer>© 2026 JulesGambles · All rights reserved</footer>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+<div id="root"></div>
+</body>
+</html>
