@@ -118,15 +118,16 @@
     .sdl{flex:1;height:1px;background:var(--b2)}
     .sdlbl{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
     .lbtable{border:1px solid var(--b1);border-radius:12px;overflow:hidden;margin-bottom:56px}
-    .lbhead{display:grid;grid-template-columns:52px 1fr auto auto;gap:14px;align-items:center;padding:10px 20px;background:var(--s2);border-bottom:1px solid var(--b1)}
-    .lbh{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
-    .lbrow{display:grid;grid-template-columns:52px 1fr auto auto;gap:14px;align-items:center;padding:14px 20px;background:var(--s1);border-bottom:1px solid var(--b1);transition:background .15s}
+    .lbhead{display:grid;grid-template-columns:60px 1fr 140px 120px;gap:0;align-items:center;padding:10px 20px;background:var(--s2);border-bottom:1px solid var(--b1)}
+    .lbh{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-align:center}
+    .lbh:nth-child(2){text-align:center}
+    .lbrow{display:grid;grid-template-columns:60px 1fr 140px 120px;gap:0;align-items:center;padding:14px 20px;background:var(--s1);border-bottom:1px solid var(--b1);transition:background .15s}
     .lbrow:last-child{border-bottom:none}
     .lbrow:hover{background:var(--s2)}
     .lbrk{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-align:center;color:var(--mu)}
-    .lbnm{font-size:13px;font-weight:500;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .lbwager{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--mu);text-align:right;white-space:nowrap}
-    .lbprize{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--ac);text-align:right;white-space:nowrap}
+    .lbnm{font-size:13px;font-weight:500;color:var(--tx);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+    .lbwager{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--mu);text-align:center;white-space:nowrap}
+    .lbprize{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--ac);text-align:center;white-space:nowrap}
     @media(max-width:600px){.podium{gap:6px}.cd-num{font-size:28px;padding:5px 10px;min-width:42px}}
 
     /* Coming soon */
@@ -261,8 +262,8 @@ function GambaLeaderboard() {
   const rest = players.slice(3);
   const ended = meta.endDate && new Date(meta.endDate) < new Date();
 
-  const fmtWager = v => v >= 1000 ? `$${(v / 1000).toFixed(1)}k` : `$${Number(v || 0).toFixed(0)}`;
-  const fmtPrize = v => `$${Number(v || 0).toLocaleString()}`;
+  const fmtWager = v => `$${Number(v || 0).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}`;
+  const fmtPrize = v => `$${Number(v || 0).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}`;
 
   const podiumOrder = top3.length === 3 ? [top3[1], top3[0], top3[2]] : top3;
   const podiumClass = top3.length === 3 ? ['p2', 'p1', 'p3'] : ['p1', 'p2', 'p3'];
@@ -279,7 +280,7 @@ function GambaLeaderboard() {
     <div>
       <div className="lb-header">
         <img src="/assets/gamba.png" className="lb-platform-logo" alt="Gamba"/>
-        <div className="lb-prize-amt">{meta.prizePool ? fmtPrize(meta.prizePool) : '—'}</div>
+        <div className="lb-prize-amt">{meta.prizePool ? `$${Number(meta.prizePool).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}` : '—'}</div>
         <div className="lb-prize-lbl">Prize Pool</div>
         <div className="lb-code">Use code <strong>JULES</strong> to qualify</div>
       </div>
