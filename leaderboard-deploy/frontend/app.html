@@ -40,27 +40,18 @@
     .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
     .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:58px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:.95;margin-bottom:14px}
     .hero-sub{font-size:14px;color:var(--mu);max-width:380px;line-height:1.6;margin-bottom:24px}
+    .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
     .hero-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:8px;background:var(--ac);color:#fff;border:none;cursor:pointer;transition:opacity .15s;text-decoration:none}
     .hero-btn:hover{opacity:.85}
+    .hero-btn-kick{background:#53fc18;color:#000}
 
-    /* Section */
-    .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-    .sec-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
-    .sec-line{flex:1;height:1px;background:var(--b2)}
-
-    /* Platform cards */
-    .platforms{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:48px}
-    .pcard{background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .15s}
-    .pcard:hover{border-color:var(--b3);transform:translateY(-2px)}
-    .pcard-top{display:flex;align-items:center;gap:14px}
-    .pcard-logo{width:48px;height:48px;border-radius:10px;object-fit:contain;background:var(--s2);padding:6px}
-    .pcard-info{flex:1}
-    .pcard-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff}
-    .pcard-code{font-size:11px;color:var(--mu);margin-top:2px}
-    .pcard-code span{color:var(--ac);font-weight:600}
-    .pcard-desc{font-size:13px;color:var(--mu);line-height:1.55}
-    .pcard-btn{display:flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border-radius:8px;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.25);color:var(--ac);cursor:pointer;transition:background .15s,border-color .15s;text-decoration:none}
-    .pcard-btn:hover{background:rgba(168,85,247,.2);border-color:rgba(168,85,247,.4)}
+    /* Nav cards */
+    .navcards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:56px}
+    .navcard{background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:32px 16px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;transition:border-color .2s,background .2s;text-decoration:none}
+    .navcard:hover{background:#222;border-color:rgba(255,255,255,.18)}
+    .navcard-icon{width:72px;height:72px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75)}
+    .navcard-label{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center}
+    @media(max-width:640px){.navcards{grid-template-columns:repeat(2,1fr)}}
 
     /* Leaderboard tab */
     .lb-wrap{padding:32px 0 64px}
@@ -190,38 +181,62 @@ function Nav({ page, setPage, drawerOpen, setDrawerOpen }) {
 }
 
 function HomePage({ setPage }) {
+  const TrophyIcon = () => (
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 9H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/><path d="M18 9h3a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-3"/>
+      <path d="M6 4h12v8a6 6 0 0 1-12 0V4z"/><path d="M12 18v4"/><path d="M8 22h8"/>
+    </svg>
+  );
+  const CrownIcon = () => (
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 19h20M2 19l3-9 5 5 2-9 2 9 5-5 3 9"/>
+    </svg>
+  );
+  const SwordsIcon = () => (
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/>
+      <polyline points="16 16 20 20"/><polyline points="21 11.5 11.5 21"/>
+      <path d="M4.5 6.5 8 10M7.5 3.5 11 7"/>
+    </svg>
+  );
+  const StarIcon = () => (
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      <circle cx="12" cy="12" r="3" strokeWidth="0" fill="currentColor" opacity=".3"/>
+    </svg>
+  );
   return (
     <div className="page">
-      {/* Hero */}
       <div className="hero f1">
         <div className="hero-glow"/>
         <div style={{position:'relative',zIndex:1}}>
-          <div className="hero-eyebrow">Welcome</div>
-          <div className="hero-title">Jules<br/>Gambles</div>
-          <div className="hero-sub">Exclusive leaderboards, rewards and more. Use code JULES on partnered platforms.</div>
-          <a className="hero-btn" onClick={() => setPage('leaderboards')}>View Leaderboards</a>
+          <div className="hero-eyebrow">Welcome to</div>
+          <div className="hero-title">KingJul<br/>95</div>
+          <div className="hero-sub">Exclusive leaderboards, bonus hunts, tournaments and more. Use code <strong style={{color:'#fff'}}>Jules95</strong> on Gamba.</div>
+          <div className="hero-btns">
+            <a href="https://kick.com/kingjul95" target="_blank" rel="noreferrer" className="hero-btn hero-btn-kick">Watch on Kick</a>
+            <a className="hero-btn" onClick={() => setPage('leaderboards')}>View Leaderboards</a>
+          </div>
         </div>
       </div>
 
-      {/* Platforms */}
-      <div className="f2">
-        <div className="sec-head">
-          <span className="sec-title">Partnered Platforms</span>
-          <div className="sec-line"/>
-        </div>
-        <div className="platforms">
-          <div className="pcard">
-            <div className="pcard-top">
-              <div style={{width:48,height:48,borderRadius:10,background:'var(--s2)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:22}}>🎰</div>
-              <div className="pcard-info">
-                <div className="pcard-name">Coming Soon</div>
-                <div className="pcard-code">Code: <span>JULES</span></div>
-              </div>
-            </div>
-            <div className="pcard-desc">Partnered platforms will appear here. Check back soon.</div>
-            <a className="pcard-btn">Learn More</a>
-          </div>
-        </div>
+      <div className="navcards f2">
+        <a className="navcard" onClick={() => setPage('leaderboards')}>
+          <div className="navcard-icon"><TrophyIcon/></div>
+          <div className="navcard-label">Leaderboards</div>
+        </a>
+        <a className="navcard" onClick={() => setPage('rewards')}>
+          <div className="navcard-icon"><CrownIcon/></div>
+          <div className="navcard-label">VIP System</div>
+        </a>
+        <a className="navcard">
+          <div className="navcard-icon"><SwordsIcon/></div>
+          <div className="navcard-label">Tournaments</div>
+        </a>
+        <a className="navcard">
+          <div className="navcard-icon"><StarIcon/></div>
+          <div className="navcard-label">Bonus Hunts</div>
+        </a>
       </div>
     </div>
   );
@@ -293,7 +308,7 @@ function GambaLeaderboard() {
         <img src="/assets/gamba.png" className="lb-platform-logo" alt="Gamba"/>
         <div className="lb-title">Bi-Weekly Leaderboard</div>
         <div className="lb-prize-amt">{meta.prizePool ? <><span className="lb-prize-dollar">$</span>{Number(meta.prizePool).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0})}</> : '—'}</div>
-        <div className="lb-code">Use code <strong>JULES</strong> to qualify</div>
+        <div className="lb-code">Use code <strong>Jules95</strong> to qualify</div>
       </div>
 
       {top3.length > 0 && (
