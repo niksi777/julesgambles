@@ -16,10 +16,10 @@
     .f1{animation:fu .5s ease both}.f2{animation:fu .5s .15s ease both}.f3{animation:fu .5s .3s ease both}
 
     nav{background:rgba(6,7,13,.97);border-bottom:1px solid var(--b2);position:sticky;top:0;z-index:50}
-    .ni{max-width:1020px;margin:0 auto;padding:0 28px;display:flex;align-items:center;height:56px}
-    .nlogo{display:flex;align-items:center;gap:10px;padding-right:22px;border-right:1px solid var(--b2);margin-right:18px;flex-shrink:0;text-decoration:none}
+    .ni{max-width:1020px;margin:0 auto;padding:0 28px;display:flex;align-items:center;height:56px;position:relative}
+    .nlogo{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
     .nname{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.16em;color:#fff;text-transform:uppercase}
-    .nlinks{display:flex;align-items:center;flex:1}
+    .nlinks{display:flex;align-items:center;position:absolute;left:50%;transform:translateX(-50%)}
     .nlinks a{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:0 13px;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-1px;cursor:pointer}
     .nlinks a:hover{color:rgba(255,255,255,.9)}
     .nlinks a.on{color:#fff;border-bottom-color:rgba(255,255,255,.5)}
