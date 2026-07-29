@@ -115,7 +115,7 @@
     .cd-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-top:5px}
     .cd-sep{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:rgba(255,255,255,.2);padding-bottom:18px;align-self:flex-end}
     .podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;margin-bottom:32px;align-items:end}
-    .pcard{background:#1c1c1c;border:none;border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+    .pcard{background:#1c1c1c;border:none;border-radius:12px;padding:20px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;min-width:0}
     .pcard::before{content:'';position:absolute;inset:0;border-radius:12px;padding:1px;background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,.18) 70%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;pointer-events:none}
     .pcard.p1{padding:26px 22px 22px}
     .pcard.p1::before{background:linear-gradient(to bottom,transparent 0%,#c8840a 65%);padding:2px}
@@ -151,7 +151,15 @@
     .lbwager{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--mu);display:flex;align-items:center;justify-content:center;white-space:nowrap}
     .lbprize{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;white-space:nowrap;gap:2px}
     .lbprize-dollar{color:#22c55e}
-    @media(max-width:600px){.podium{gap:8px}.cd-num{font-size:28px;padding:5px 10px;min-width:42px}}
+    @media(max-width:640px){
+      .podium{gap:6px}
+      .cd-num{font-size:28px;padding:5px 10px;min-width:42px}
+      .lbhead,.lbrow{grid-template-columns:36px 1fr 80px 80px;padding:10px 12px}
+      .lbh,.lbrk{font-size:11px}
+      .lbnm{font-size:12px}
+      .lbwager,.lbprize{font-size:13px}
+      .pstat-lbl{font-size:12px}.pstat-val{font-size:14px}
+    }
 
     /* Coming soon */
     .coming-soon{text-align:center;padding:80px 20px;color:var(--mu)}
